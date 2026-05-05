@@ -311,9 +311,9 @@ function criarEntrega(event) {
   limparCampos();
   fecharForm();
 
-  mostrarToast("Entrega salva");
-  tocarSom("success");
-
+ mostrarToast("Entrega salva");
+tocarSom("money");
+  
   setTimeout(() => {
     const primeiroCard = document.querySelector(".delivery-card");
     if (primeiroCard) {
