@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta 
+    name="viewport" 
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" 
+  />
+
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>EntregaOK — Controle Premium de Entregas</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="icon" href="icon-512.png" />
+  <link rel="apple-touch-icon" href="icon-512.png" />
+  <link rel="manifest" href="manifest.json" />
+
+</head>
+
+<body>
+
+  <!-- FUNDO PREMIUM -->
+  <div class="app-bg">
+    <div class="bg-vignette"></div>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="orb orb-three"></div>
+    <div class="orb orb-four"></div>
+    <div class="liquid-line line-one"></div>
+    <div class="liquid-line line-two"></div>
+    <div class="quick-lightning lightning-one"></div>
+    <div class="quick-lightning lightning-two"></div>
+    <div class="quick-lightning lightning-three"></div>
+    <div class="noise"></div>
+    <div class="grid-light"></div>
+  </div>
+
+  <!-- SPLASH / ANIMAÇÃO DE ENTRADA -->
+<section class="splash-screen" id="splashScreen">
+
+  <div class="splash-bg">
+    <div class="splash-orb splash-orb-one"></div>
+    <div class="splash-orb splash-orb-two"></div>
+    <div class="splash-line"></div>
+  </div>
+
+  <div class="splash-content">
+
+    <div class="splash-logo-wrap glass-premium">
+
+      <svg 
+  class="delivery-logo-svg" 
+  viewBox="0 0 300 200" 
+  fill="none" 
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="Logo EntregaOK"
+>
+
+  <!-- mochila atrás do motoboy -->
+  <rect class="logo-line bag-line" x="92" y="58" width="48" height="48" rx="6" />
+  <path class="check-line" d="M103 82L115 94L132 72" />
+
+  <!-- roda traseira -->
+  <circle class="logo-line wheel-line" cx="84" cy="150" r="23" />
+  <circle class="logo-dot" cx="84" cy="150" r="4" />
+
+  <!-- roda dianteira -->
+  <circle class="logo-line wheel-line" cx="218" cy="150" r="23" />
+  <circle class="logo-dot" cx="218" cy="150" r="4" />
+
+  <!-- base da moto -->
+  <path class="logo-line moto-line" d="M84 150H218" />
+
+  <!-- corpo da scooter / moto -->
+  <path class="logo-line moto-line" d="M112 145C130 132 144 128 163 130" />
+  <path class="logo-line moto-line" d="M145 130L170 105H204" />
+  <path class="logo-line moto-line" d="M177 108C193 119 205 132 218 150" />
+  <path class="logo-line moto-line" d="M206 105C213 112 219 120 224 130" />
+  <path class="logo-line moto-line" d="M130 150L158 130" />
+
+  <!-- garfo dianteiro -->
+  <path class="logo-line moto-line" d="M207 112L218 150" />
+
+  <!-- banco -->
+  <path class="logo-line moto-line" d="M132 111H165" />
+
+  <!-- corpo do motoboy -->
+  <path class="logo-line rider-line" d="M160 80C149 91 143 106 145 126" />
+  <path class="logo-line rider-line" d="M160 80L185 101" />
+  <path class="logo-line rider-line" d="M145 126L128 145" />
+  <path class="logo-line rider-line" d="M178 100L160 130" />
+
+  <!-- braços no guidão -->
+  <path class="logo-line rider-line" d="M184 101C196 101 204 102 211 107" />
+  <path class="logo-line rider-line" d="M211 107L221 105" />
+
+  <!-- capacete -->
+  <path class="logo-line helmet-line" d="M160 48C173 38 194 44 198 61C201 75 191 85 176 85C161 85 150 62 160 48Z" />
+  <path class="logo-line helmet-line" d="M176 57H201" />
+  <path class="logo-line helmet-line" d="M191 65C185 68 180 68 174 65" />
+
+  <!-- ligação mochila nas costas -->
+  <path class="logo-line bag-line" d="M140 82L156 86" />
+
+</svg>
+
+    </div>
+
+    <h1 class="splash-title">EntregaOK</h1>
+    <p class="splash-subtitle">Controle rápido de entregas</p>
+
+    <div class="splash-loader">
+      <span></span>
+    </div>
+
+  </div>
+
+</section>
+
+  <!-- ONBOARDING / NOME DO ENTREGADOR -->
+  <section class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-card glass-premium">
+      <div class="brand-badge logo-badge">
+  <img src="logo.png" alt="EntregaOK" />
+</div>
+
+      <p class="eyebrow">primeiro acesso</p>
+      <h1>Quem está entregando hoje?</h1>
+
+      <p class="welcome-text">
+        Coloque o nome do entregador para personalizar o fechamento do dia e deixar o controle mais profissional.
+      </p>
+
+      <form id="welcomeForm">
+        <div class="field-group">
+          <label for="driverNameInput">Nome do entregador</label>
+          <input 
+            type="text" 
+            id="driverNameInput" 
+            placeholder="Ex: Murilo Dias"
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <button class="submit-btn full" type="submit">
+          Entrar no EntregaOK
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <main class="app-shell" id="appShell">
+
+    <!-- HEADER -->
+    <header class="topbar glass-premium">
+      <div class="brand">
+       <div class="brand-square logo-badge">
+  <img src="logo.png" alt="EntregaOK" />
+</div>
+
+        <div class="brand-copy">
+          <p class="eyebrow">offline ready</p>
+          <h1>EntregaOK</h1>
+          <span id="driverGreeting">Bom trabalho</span>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-btn" id="btnEditDriver" aria-label="Editar entregador">
+          ✎
+        </button>
+
+        <button class="icon-btn menu-trigger" id="btnMenu" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- PAINEL ESQUERDO / CONTROLES -->
+    <aside class="control-column">
+
+      <!-- RESUMO -->
+      <section class="summary-grid">
+
+        <article class="summary-card primary glass-premium">
+          <div>
+            <p class="summary-label">Total entregue</p>
+            <h2 id="totalEntregue">R$ 0,00</h2>
+          </div>
+
+          <span id="qtdEntregue">0 finalizadas</span>
+        </article>
+
+        <article class="summary-card glass-premium">
+          <div>
+            <p class="summary-label">Na rua</p>
+            <h2 id="totalPendente">R$ 0,00</h2>
+          </div>
+
+          <span id="qtdPendente">0 pendentes</span>
+        </article>
+
+      </section>
+
+      <!-- AÇÕES RÁPIDAS -->
+      <section class="quick-actions glass-premium">
+
+        <button class="action-btn" id="btnNovaEntrega">
+          <span class="action-icon">+</span>
+          Nova entrega
+        </button>
+
+        <button class="action-btn ghost" id="btnFecharDia">
+          <span>✓</span>
+          Fechar dia
+        </button>
+
+        <button class="action-btn ghost danger" id="btnLimparDia">
+          <span>×</span>
+          Limpar
+        </button>
+
+      </section>
+
+      <!-- FORMULÁRIO -->
+      <section class="form-panel glass-premium" id="formPanel">
+
+        <div class="form-header">
+          <div>
+            <p class="eyebrow">registro rápido</p>
+            <h3>Adicionar entrega</h3>
+          </div>
+
+          <button class="icon-btn small" id="btnFecharForm" type="button">
+            ×
+          </button>
+        </div>
+
+        <form id="deliveryForm">
+
+          <div class="field-group">
+            <label for="nome">Nome / cliente</label>
+            <input 
+              type="text" 
+              id="nome" 
+              autocomplete="off"
+              placeholder="Ex: Cliente, mesa, bairro..."
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label for="valor">Valor cobrado</label>
+            <input 
+              type="text" 
+              id="valor" 
+              inputmode="decimal"
+              placeholder="Ex: 45,00"
+              required
+            />
+          </div>
+
+          <button class="submit-btn" type="submit">
+            Salvar entrega
+          </button>
+
+        </form>
+
+      </section>
+
+      <!-- BUSCA -->
+      <section class="search-panel glass-premium">
+        <span class="search-icon">⌕</span>
+
+        <input 
+          type="text" 
+          id="busca" 
+          placeholder="Buscar entrega..."
+          autocomplete="off"
+        />
+      </section>
+
+    </aside>
+
+    <!-- PAINEL DIREITO / LISTA -->
+    <section class="deliveries-column glass-premium">
+
+      <div class="list-top">
+        <div>
+          <p class="eyebrow">controle do dia</p>
+          <h2>Entregas de hoje</h2>
+        </div>
+
+        <span id="contadorEntregas">0 entregas</span>
+      </div>
+
+      <section class="deliveries-list" id="listaEntregas">
+
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">↗</div>
+          <h2>Nenhuma entrega ainda</h2>
+          <p>
+            Registre nome e valor em segundos. Foto é opcional e tudo fica salvo no navegador.
+          </p>
+
+          <button class="submit-btn compact" id="btnEmptyNova" type="button">
+            Criar primeira entrega
+          </button>
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+  <!-- BOTÃO FLUTUANTE MOBILE -->
+  <button class="floating-add" id="floatingAdd">
+    <span>+</span>
+    Nova entrega
+  </button>
+
+  <!-- MENU INFERIOR MOBILE -->
+  <nav class="bottom-nav glass-premium">
+    <button class="bottom-btn active" id="navHoje">
+      <span>⌂</span>
+      Hoje
+    </button>
+
+    <button class="bottom-btn" id="navRapido">
+  <span class="bolt-icon">⚡</span>
+  Rápido
+</button>
+
+    <button class="bottom-btn" id="navFechar">
+      <span>✓</span>
+      Fechar
+    </button>
+  </nav>
+
+    <!-- MENU DO APP -->
+<div class="app-menu-overlay" id="appMenuOverlay">
+  <div class="app-menu glass-premium">
+
+    <div class="app-menu-header">
+      <div>
+        <p class="eyebrow">menu</p>
+        <h3>EntregaOK</h3>
+      </div>
+
+      <button class="icon-btn small" id="btnCloseMenu" type="button">
+        ×
+      </button>
+    </div>
+
+    <button class="menu-option" id="menuChangeName" type="button">
+      <span>✎</span>
+      Mudar nome
+    </button>
+
+    <button class="menu-option" id="menuSupport" type="button">
+      <span>☏</span>
+      Chamar suporte
+    </button>
+
+    <button class="menu-option danger" id="menuExit" type="button">
+      <span>↩</span>
+      Sair do app
+    </button>
+
+  </div>
+</div>
+
+  <!-- MODAL FOTO -->
+  <div class="modal" id="photoModal">
+    <div class="modal-card glass-premium">
+
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">prova opcional</p>
+          <h3>Foto do pedido</h3>
+        </div>
+
+        <button class="icon-btn small" id="btnClosePhoto" type="button">
+          ×
+        </button>
+      </div>
+
+      <p class="modal-text">
+        Tire foto da comanda ou papel do pedido quando der tempo. Não é obrigatório.
+      </p>
+
+      <input 
+        type="file" 
+        id="photoInput" 
+        accept="image/*" 
+        capture="environment"
+        hidden
+      />
+
+      <button class="submit-btn full" id="btnTakePhoto" type="button">
+        Tirar foto
+      </button>
+
+      <button class="action-btn ghost full" id="btnRemovePhoto" type="button">
+        Remover foto
+      </button>
+
+    </div>
+  </div>
+
+    <!-- TELA MODO RÁPIDO -->
+<section class="quick-mode-screen" id="quickModeScreen">
+
+  <div class="quick-mode-bg">
+    <div class="quick-bolt bolt-a"></div>
+    <div class="quick-bolt bolt-b"></div>
+    <div class="quick-bolt bolt-c"></div>
+  </div>
+
+  <div class="quick-mode-shell">
+
+    <header class="quick-mode-header glass-premium">
+      <div>
+        <p class="eyebrow">modo rápido</p>
+        <h2>Registrar entrega</h2>
+        <span>Feito para lançar pedido em segundos.</span>
+      </div>
+
+      <button class="icon-btn small" id="btnCloseQuickMode" type="button">
+        ×
+      </button>
+    </header>
+
+    <section class="quick-mode-form glass-premium">
+      <form id="quickDeliveryForm">
+
+        <div class="field-group">
+          <label for="quickNome">Nome / cliente</label>
+          <input
+            type="text"
+            id="quickNome"
+            placeholder="Ex: João, mesa 4..."
+            autocomplete="off"
+            required
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="quickValor">Valor</label>
+          <input
+            type="text"
+            id="quickValor"
+            inputmode="decimal"
+            placeholder="Ex: 45,00"
+            required
+          />
+        </div>
+
+        <button class="submit-btn full quick-submit" type="submit">
+          <span>⚡</span>
+          Salvar rápido
+        </button>
+
+      </form>
+    </section>
+
+    <section class="quick-mode-list glass-premium">
+      <div class="quick-list-top">
+        <div>
+          <p class="eyebrow">lançadas agora</p>
+          <h3>Entregas do dia</h3>
+        </div>
+
+        <span id="quickCounter">0</span>
+      </div>
+
+      <div class="quick-list" id="quickListaEntregas">
+        <!-- JS coloca as entregas aqui -->
+      </div>
+    </section>
+
+  </div>
+</section>
+
+  <!-- TELA PREMIUM DE FECHAMENTO -->
+  <section class="close-screen" id="closeScreen">
+
+    <div class="close-bg">
+      <div class="success-ring ring-one"></div>
+      <div class="success-ring ring-two"></div>
+      <div class="success-ring ring-three"></div>
+    </div>
+
+    <div class="close-card glass-premium">
+
+      <button class="icon-btn close-back" id="btnCloseSummary" type="button">
+        ×
+      </button>
+
+      <div class="success-badge">
+        <span>✓</span>
+      </div>
+
+      <p class="eyebrow">fechamento concluído</p>
+
+      <h1 id="closeTitle">
+        Dia finalizado com sucesso.
+      </h1>
+
+      <p class="close-subtitle" id="closeSubtitle">
+        Aqui está o resumo completo das entregas de hoje.
+      </p>
+
+      <div class="close-stats">
+
+        <article class="close-stat main">
+          <p>Total entregue</p>
+          <strong id="closeTotalEntregue">R$ 0,00</strong>
+        </article>
+
+        <article class="close-stat">
+          <p>Entregas</p>
+          <strong id="closeQtdTotal">0</strong>
+        </article>
+
+        <article class="close-stat">
+          <p>Finalizadas</p>
+          <strong id="closeQtdFinalizadas">0</strong>
+        </article>
+
+        <article class="close-stat">
+          <p>Pendentes</p>
+          <strong id="closeQtdPendentes">0</strong>
+        </article>
+
+      </div>
+
+      <div class="close-details">
+        <div>
+          <span>Total geral</span>
+          <strong id="closeTotalGeral">R$ 0,00</strong>
+        </div>
+
+        <div>
+          <span>Valor pendente</span>
+          <strong id="closeTotalPendente">R$ 0,00</strong>
+        </div>
+
+        <div>
+          <span>Entregador</span>
+          <strong id="closeDriverName">-</strong>
+        </div>
+      </div>
+
+      <div class="close-actions">
+        <button class="submit-btn full" id="btnDownloadClose" type="button">
+          Baixar fechamento
+        </button>
+
+        <button class="action-btn ghost full" id="btnBackToApp" type="button">
+          Voltar ao app
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+    <!-- CONFETE -->
+<div class="confetti-layer" id="confettiLayer"></div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    Entrega salva
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
