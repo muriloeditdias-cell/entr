@@ -1065,6 +1065,23 @@ if (tipo === "money") {
 
     oscillator.start(audioCtx.currentTime);
     oscillator.stop(audioCtx.currentTime + 0.15);
+    if (tipo === "money") {
+  const osc2 = audioCtx.createOscillator();
+  const gain2 = audioCtx.createGain();
+
+  osc2.type = "triangle";
+  osc2.frequency.setValueAtTime(900, audioCtx.currentTime + 0.05);
+
+  gain2.gain.setValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+  gain2.gain.exponentialRampToValueAtTime(0.05, audioCtx.currentTime + 0.06);
+  gain2.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.14);
+
+  osc2.connect(gain2);
+  gain2.connect(audioCtx.destination);
+
+  osc2.start(audioCtx.currentTime + 0.05);
+  osc2.stop(audioCtx.currentTime + 0.15);
+}
   } catch (error) {
     console.log("Som não suportado neste navegador");
   }
