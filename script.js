@@ -1021,6 +1021,12 @@ function renderizarListaRapida() {
 }
 
 function tocarSom(tipo = "success") {
+
+if (tipo === "money") {
+  oscillator.frequency.setValueAtTime(700, audioCtx.currentTime);
+  oscillator.frequency.exponentialRampToValueAtTime(1100, audioCtx.currentTime + 0.05);
+}
+  
   try {
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioCtx = new AudioContext();
