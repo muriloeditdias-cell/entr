@@ -982,7 +982,8 @@ function criarEntregaRapida(event) {
 
   tocarSom("success");
   vibrarLeve();
-  mostrarToast("Entrega lançada ⚡");
+ mostrarToast("Entrega lançada ⚡");
+tocarSom("money");
 }
 
 function renderizarListaRapida() {
